@@ -61,9 +61,7 @@ public class Test {
         QueryFungibleBalanceParam param = new QueryFungibleBalanceParam();
         param.setUserId("1111");
         param.setTokenAppId("1111");
-        param.setMaxAmount("100");
         param.setUserAppId("1111");
-        param.setUuid("1111");
         param.setTokenId("1111");
         setParam(param);
         VastChainResponseDTO result = VastChainApi.queryFungibleBalance(param);

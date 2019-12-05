@@ -85,22 +85,21 @@ public class VastChainApi {
      * 创建商户
      *
      * @param param
-     * @param type 创建子商户（subMerchant）还是父商户（merchant)
      * @return
      * @throws ApiResponseException
      */
-    public static VastChainResponseDTO createMerchant(CreateMerchantParam param, String type) throws ApiResponseException {
+    public static VastChainResponseDTO createMerchant(CreateMerchantParam param) throws ApiResponseException {
         valid(param);
         param.setPath("/merchant/");
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("type", type);
+        jsonObject.put("type", param.getType());
 
         JSONObject parameters = new JSONObject();
         parameters.put("displayName", param.getDisplayName());
         parameters.put("pw", param.getPw());
         parameters.put("disabled", param.getDisabled());
         parameters.put("appId", param.getAppId());
-        if("subMerchant".equals(type)) {
+        if("subMerchant".equals(param.getType())) {
             parameters.put("parentMerchantId", param.getParentMerchantId());
         }
         jsonObject.put("parameters", parameters);
@@ -316,5 +315,91 @@ public class VastChainApi {
         String url = Signature.sign(param, HTTP_METHOD_POST, body);
         String result = new OkhttpApi(url, param.getTimeout()).post(body);
         return JSON.parseObject(result, WechatPayDTO.class);
+    }
+
+    /**
+     * 退款接口
+     * @param param
+     * @return
+     * @throws ApiResponseException
+     */
+    public static VastChainResponseDTO refund(RefundParam param) throws ApiResponseException {
+        valid(param);
+        param.setPath("/submerchant-pay/refund/");
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("id", param.getId());
+
+        String body = jsonObject.toJSONString();
+        String url = Signature.sign(param, HTTP_METHOD_POST, body);
+        String result = new OkhttpApi(url, param.getTimeout()).post(body);
+        return JSON.parseObject(result, VastChainResponseDTO.class);
+    }
+
+    /**
+     * 设置商户支付参数
+     * @param param
+     * @return
+     * @throws ApiResponseException
+     */
+    public static VastChainResponseDTO setMerchantPayParams(MerchantPayParam param) throws ApiResponseException {
+        valid(param);
+        param.setPath("/merchant/paymentParams/");
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("id", param.getId());
+        jsonObject.put("paymentChannel", param.getPaymentChannel());
+
+        JSONObject parameters = new JSONObject();
+        parameters.put("notifyCallbackUrl", param.getNotifyCallbackUrl());
+        if("WechatUnionPayBizSmall".equals(param.getPaymentChannel())){
+            parameters.put("unionPayBizMchId", param.getUnionPayBizMchId());
+            parameters.put("terminalId", param.getTerminalId());
+        }else  if("WechatNative".equals(param.getPaymentChannel())){
+            parameters.put("profitSharing", param.getProfitSharing());
+            parameters.put("wechatAppId", param.getWechatAppId());
+            parameters.put("wechatMchId", param.getWechatMchId());
+        }
+
+        jsonObject.put("parameters",parameters);
+
+        String body = jsonObject.toJSONString();
+        String url = Signature.sign(param, HTTP_METHOD_POST, body);
+        String result = new OkhttpApi(url, param.getTimeout()).post(body);
+        return JSON.parseObject(result, VastChainResponseDTO.class);
+    }
+
+    /**
+     * 获取链上 ID 接口
+     * @param param
+     * @return
+     * @throws ApiResponseException
+     */
+    public static FetchOnChainIdsDTO fetchOnChainIds(FetchOnChainIdsParam param) throws ApiResponseException {
+        valid(param);
+        param.setPath("/common-chain-upload/fetchOnChainIds/");
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("items", param.getItems());
+
+        String body = jsonObject.toJSONString();
+        String url = Signature.sign(param, HTTP_METHOD_POST, body);
+        String result = new OkhttpApi(url, param.getTimeout()).post(body);
+        return JSON.parseObject(result, FetchOnChainIdsDTO.class);
+    }
+
+    /**
+     * 批量上链接口
+     * @param param
+     * @return
+     * @throws ApiResponseException
+     */
+    public static VastChainResponseDTO uploadChain(UploadChainParam param) throws ApiResponseException {
+        valid(param);
+        param.setPath("/common-chain-upload/");
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("items", param.getItems());
+
+        String body = jsonObject.toJSONString();
+        String url = Signature.sign(param, HTTP_METHOD_POST, body);
+        String result = new OkhttpApi(url, param.getTimeout()).post(body);
+        return JSON.parseObject(result, VastChainResponseDTO.class);
     }
 }

@@ -2,6 +2,8 @@ package io.vastchain.sdk.param;
 
 
 public class CreateMerchantParam extends VastChainRequestParam {
+    /**  type 创建子商户（subMerchant）还是父商户（merchant) */
+    private String type;
     /**  商户显示名称 */
     private String displayName;
     /** 商户密码*/
@@ -12,6 +14,14 @@ public class CreateMerchantParam extends VastChainRequestParam {
     private String parentMerchantId;
     /** 是否禁用该商户 */
     private Boolean disabled;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public String getDisplayName() {
         return displayName;
