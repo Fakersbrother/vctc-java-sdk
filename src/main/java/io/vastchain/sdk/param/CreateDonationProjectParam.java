@@ -1,7 +1,7 @@
 package io.vastchain.sdk.param;
 
 
-public class CreateDonationProjectParam extends ApiRequestParam {
+public class CreateDonationProjectParam extends VastChainRequestParam {
 
     /**  必选，在项目方数据库中能唯一找到项目的项目 id，请确保该 id 不重复且可查询到项目情况 */
     private String id;

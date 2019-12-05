@@ -1,6 +1,6 @@
 package io.vastchain.sdk.util;
 
-import io.vastchain.sdk.param.ApiRequestParam;
+import io.vastchain.sdk.param.VastChainRequestParam;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
@@ -25,7 +25,7 @@ public class Signature {
      * @param body
      * @return
      */
-    public static String sign(ApiRequestParam api, String httpMethod, String body) {
+    public static String sign(VastChainRequestParam api, String httpMethod, String body) {
         String query = api.getQuery();
         String appId = api.getAppId();
         String appSecret = api.getAppSecret();

@@ -4,8 +4,7 @@ package io.vastchain.sdk;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import io.vastchain.sdk.dto.LoginMerchantDTO;
-import io.vastchain.sdk.dto.VastChainDTO;
+import io.vastchain.sdk.dto.*;
 import io.vastchain.sdk.exception.ApiResponseException;
 import io.vastchain.sdk.param.*;
 import io.vastchain.sdk.util.OkhttpApi;
@@ -22,7 +21,7 @@ public class VastChainApi {
     public VastChainApi() {
     }
 
-    private static void valid(ApiRequestParam param) throws ApiResponseException {
+    private static void valid(VastChainRequestParam param) throws ApiResponseException {
         if (param.getAppId() == null || "".equals(param.getAppId())) {
             throw new ApiResponseException("appId is null");
         }
@@ -41,7 +40,7 @@ public class VastChainApi {
      * @return
      * @throws ApiResponseException
      */
-    public static VastChainDTO sendSms(SendSmsParam param) throws ApiResponseException {
+    public static VastChainResponseDTO sendSms(SendSmsParam param) throws ApiResponseException {
         valid(param);
         param.setPath("/sms/verificationCode/");
         // 目前只支持同时发送 1 条短信
@@ -60,7 +59,7 @@ public class VastChainApi {
         String body = jsonObject.toJSONString();
         String url = Signature.sign(param, HTTP_METHOD_POST, body);
         String result = new OkhttpApi(url, param.getTimeout()).post(body);
-        return JSON.parseObject(result, VastChainDTO.class);
+        return JSON.parseObject(result, VastChainResponseDTO.class);
     }
 
     /**
@@ -90,7 +89,7 @@ public class VastChainApi {
      * @return
      * @throws ApiResponseException
      */
-    public static VastChainDTO createMerchant(CreateMerchantParam param,String type) throws ApiResponseException {
+    public static VastChainResponseDTO createMerchant(CreateMerchantParam param, String type) throws ApiResponseException {
         valid(param);
         param.setPath("/merchant/");
         JSONObject jsonObject = new JSONObject();
@@ -108,7 +107,7 @@ public class VastChainApi {
         String body = jsonObject.toJSONString();
         String url = Signature.sign(param, HTTP_METHOD_POST, body);
         String result = new OkhttpApi(url, param.getTimeout()).post(body);
-        return JSON.parseObject(result, VastChainDTO.class);
+        return JSON.parseObject(result, VastChainResponseDTO.class);
     }
 
     /**
@@ -117,7 +116,7 @@ public class VastChainApi {
      * @return
      * @throws ApiResponseException
      */
-    public static VastChainDTO createDonationProject(CreateDonationProjectParam param) throws ApiResponseException {
+    public static VastChainResponseDTO createDonationProject(CreateDonationProjectParam param) throws ApiResponseException {
         valid(param);
         param.setPath("/donation/project/");
         JSONObject jsonObject = new JSONObject();
@@ -133,31 +132,189 @@ public class VastChainApi {
         String body = jsonObject.toJSONString();
         String url = Signature.sign(param, HTTP_METHOD_POST, body);
         String result = new OkhttpApi(url, param.getTimeout()).post(body);
-        return JSON.parseObject(result, VastChainDTO.class);
+        return JSON.parseObject(result, VastChainResponseDTO.class);
     }
+
     /**
      * 创建捐款项目的一次捐赠
      * @param param
      * @return
      * @throws ApiResponseException
      */
-    public static VastChainDTO donateDonation(CreateDonationProjectParam param) throws ApiResponseException {
+    public static VastChainResponseDTO donateDonation(DonateDonationParam param) throws ApiResponseException {
         valid(param);
-        param.setPath("/donation/donate");
+        param.setPath("/donation/donate/");
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("id", param.getId());
         jsonObject.put("createTime", param.getCreateTime());
-        jsonObject.put("title", param.getTitle());
-        jsonObject.put("desc", param.getDesc());
-        jsonObject.put("founder", param.getFounder());
-        jsonObject.put("category", param.getCategory());
-        jsonObject.put("keyWords", param.getKeyWords());
-        jsonObject.put("targetAmount", param.getTargetAmount());
+        jsonObject.put("donatorId", param.getDonatorId());
+        jsonObject.put("donatorPublicKey", param.getDonatorPublicKey());
+        jsonObject.put("donatorName", param.getDonatorName());
+        jsonObject.put("projectId_biz", param.getProjectIdBiz());
+        jsonObject.put("projectId_bc", param.getProjectIdBc());
+        jsonObject.put("amount", param.getAmount());
 
         String body = jsonObject.toJSONString();
         String url = Signature.sign(param, HTTP_METHOD_POST, body);
         String result = new OkhttpApi(url, param.getTimeout()).post(body);
-        return JSON.parseObject(result, VastChainDTO.class);
+        return JSON.parseObject(result, VastChainResponseDTO.class);
     }
 
+    /**
+     * 获取捐款上链 ID
+     * @param param
+     * @return
+     * @throws ApiResponseException
+     */
+    public static FetchDonateOnChainIdsDTO fetchDonateOnChainIds(FetchDonateOnChainIdsParam param) throws ApiResponseException {
+        valid(param);
+        param.setPath("/donation/fetchOnChainIds/");
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("type", param.getType());
+        jsonObject.put("originalIds", param.getOriginalIds());
+
+        String body = jsonObject.toJSONString();
+        String url = Signature.sign(param, HTTP_METHOD_POST, body);
+        String result = new OkhttpApi(url, param.getTimeout()).post(body);
+        return JSON.parseObject(result, FetchDonateOnChainIdsDTO.class);
+    }
+
+    /**
+     * 查询可信积分余额
+     * @param param
+     * @return
+     * @throws ApiResponseException
+     */
+    public static VastChainResponseDTO queryFungibleBalance(QueryFungibleBalanceParam param) throws ApiResponseException {
+        valid(param);
+        param.setPath("/fungible-token/balance/");
+        StringBuffer query = new StringBuffer("");
+        query.append("tokenAppId=").append(param.getTokenAppId());
+        query.append("&tokenId=").append(param.getTokenId());
+        query.append("&userAppId=").append(param.getUserAppId());
+        query.append("&userId=").append(param.getUserId());
+        param.setQuery(query.toString());
+
+        String url = Signature.sign(param, HTTP_METHOD_GET, null);
+        String result = new OkhttpApi(url, param.getTimeout()).get();
+        return JSON.parseObject(result, VastChainResponseDTO.class);
+    }
+
+    /**
+     * 生成可信积分扣款二维码（everiPay）
+     * @param param
+     * @return
+     * @throws ApiResponseException
+     */
+    public static VastChainResponseDTO createEveriPay(CreateEveriPayParam param) throws ApiResponseException {
+        valid(param);
+        param.setPath("/fungible-token/everiPay/");
+        StringBuffer query = new StringBuffer("");
+        query.append("tokenAppId=").append(param.getTokenAppId());
+        query.append("&tokenId=").append(param.getTokenId());
+        query.append("&userAppId=").append(param.getUserAppId());
+        query.append("&userId=").append(param.getUserId());
+        query.append("&maxAmount=").append(param.getMaxAmount());
+        query.append("&uuid=").append(param.getUuid());
+        param.setQuery(query.toString());
+
+        String url = Signature.sign(param, HTTP_METHOD_GET, null);
+        String result = new OkhttpApi(url, param.getTimeout()).get();
+        return JSON.parseObject(result, VastChainResponseDTO.class);
+    }
+
+    /**
+     * 创建预支付单
+     * @param param
+     * @return
+     * @throws ApiResponseException
+     */
+    public static SubmerchantPayDTO submerchantPay(SubmerchantPayParam param) throws ApiResponseException {
+        valid(param);
+        param.setPath("/submerchant-pay/");
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("subMerchantId", param.getSubMerchantId());
+        jsonObject.put("totalAmount", param.getTotalAmount());
+        jsonObject.put("orderId", param.getOrderId());
+        jsonObject.put("extraInfo", param.getExtraInfo());
+
+        String body = jsonObject.toJSONString();
+        String url = Signature.sign(param, HTTP_METHOD_POST, body);
+        String result = new OkhttpApi(url, param.getTimeout()).post(body);
+        return JSON.parseObject(result, SubmerchantPayDTO.class);
+    }
+
+    /**
+     * 获取子商户支付详情
+     * @param param
+     * @return
+     * @throws ApiResponseException
+     */
+    public static SubMerchantPayInfoDTO getSubMerchantPayInfo(SubMerchantPayInfoParam param) throws ApiResponseException {
+        valid(param);
+        param.setPath("/submerchant-pay/prePay/"+param.getPrepayid());
+        StringBuffer query = new StringBuffer("");
+        query.append("waitForFinish=").append(param.getWaitForFinish());
+        param.setQuery(query.toString());
+
+        String url = Signature.sign(param, HTTP_METHOD_GET, null);
+        String result = new OkhttpApi(url, param.getTimeout()).get();
+        return JSON.parseObject(result, SubMerchantPayInfoDTO.class);
+    }
+
+    /**
+     * 创建微信扫码支付参数
+     * @param param
+     * @return
+     * @throws ApiResponseException
+     */
+    public static WechatPayDTO wechatPayNative(WechatPayNativeParam param) throws ApiResponseException {
+        valid(param);
+        param.setPath("/submerchant-pay/wechatPayNative/");
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("prepayId", param.getPrepayId());
+
+        String body = jsonObject.toJSONString();
+        String url = Signature.sign(param, HTTP_METHOD_POST, body);
+        String result = new OkhttpApi(url, param.getTimeout()).post(body);
+        return JSON.parseObject(result, WechatPayDTO.class);
+    }
+
+    /**
+     * 创建微信小程序支付参数
+     * @param param
+     * @return
+     * @throws ApiResponseException
+     */
+    public static WechatPayDTO wechatPay(WechatPayParam param) throws ApiResponseException {
+        valid(param);
+        param.setPath("/submerchant-pay/wechatPay/");
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("prepayId", param.getPrepayId());
+        jsonObject.put("openId", param.getOpenId());
+
+        String body = jsonObject.toJSONString();
+        String url = Signature.sign(param, HTTP_METHOD_POST, body);
+        String result = new OkhttpApi(url, param.getTimeout()).post(body);
+        return JSON.parseObject(result, WechatPayDTO.class);
+    }
+
+    /**
+     * 创建微信 App 支付参数
+     * @param param
+     * @return
+     * @throws ApiResponseException
+     */
+    public static WechatPayDTO wechatPayApp(WechatPayAppParam param) throws ApiResponseException {
+        valid(param);
+        param.setPath("/submerchant-pay/wechatPayApp/");
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("prepayId", param.getPrepayId());
+        jsonObject.put("enableProfitSharing", param.getEnableProfitSharing());
+
+        String body = jsonObject.toJSONString();
+        String url = Signature.sign(param, HTTP_METHOD_POST, body);
+        String result = new OkhttpApi(url, param.getTimeout()).post(body);
+        return JSON.parseObject(result, WechatPayDTO.class);
+    }
 }

@@ -1,7 +1,7 @@
 package io.vastchain.sdk.param;
 
 
-public class SendSmsParam extends ApiRequestParam {
+public class SendSmsParam extends VastChainRequestParam {
     /** 手机号，目前只支持同时发送 1 条短信 */
     private String phoneNumbers;
     /** 验证码类型，目前只支持整数 */

@@ -1,7 +1,7 @@
 package io.vastchain.sdk.param;
 
 
-public class CreateMerchantParam extends ApiRequestParam {
+public class CreateMerchantParam extends VastChainRequestParam {
     /**  商户显示名称 */
     private String displayName;
     /** 商户密码*/

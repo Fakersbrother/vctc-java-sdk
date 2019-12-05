@@ -1,7 +1,7 @@
 package io.vastchain.sdk.param;
 
 
-public class DonateDonationParam extends ApiRequestParam {
+public class DonateDonationParam extends VastChainRequestParam {
 
     /**  必选，在项目方数据库中能唯一找到项目的项目 id，请确保该 id 不重复且可查询到项目情况 */
     private String id;
@@ -14,9 +14,9 @@ public class DonateDonationParam extends ApiRequestParam {
     /** 可选，捐赠者名称 */
     private String donatorName;
     /** 必选，捐赠所对应的项目 id，项目必须存在 */
-    private String projectId_biz;
+    private String projectIdBiz;
     /** 可选，捐赠所对应的项目 id 上链后的 id，后面有一个 API 可根据 `projectId_biz` 查询此上链 id */
-    private String projectId_bc;
+    private String projectIdBc;
     /** 可选，金额，请务必按照此格式提供，小数点后要有2位 */
     private String amount;
 
@@ -60,20 +60,20 @@ public class DonateDonationParam extends ApiRequestParam {
         this.donatorName = donatorName;
     }
 
-    public String getProjectId_biz() {
-        return projectId_biz;
+    public String getProjectIdBiz() {
+        return projectIdBiz;
     }
 
-    public void setProjectId_biz(String projectId_biz) {
-        this.projectId_biz = projectId_biz;
+    public void setProjectIdBiz(String projectIdBiz) {
+        this.projectIdBiz = projectIdBiz;
     }
 
-    public String getProjectId_bc() {
-        return projectId_bc;
+    public String getProjectIdBc() {
+        return projectIdBc;
     }
 
-    public void setProjectId_bc(String projectId_bc) {
-        this.projectId_bc = projectId_bc;
+    public void setProjectIdBc(String projectIdBc) {
+        this.projectIdBc = projectIdBc;
     }
 
     public String getAmount() {

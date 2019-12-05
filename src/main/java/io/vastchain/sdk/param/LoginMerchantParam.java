@@ -1,7 +1,7 @@
 package io.vastchain.sdk.param;
 
 
-public class LoginMerchantParam extends ApiRequestParam {
+public class LoginMerchantParam extends VastChainRequestParam {
     /** 要登录的商户号或者子商户号 */
     private String userId;
     /** 登录密码 */

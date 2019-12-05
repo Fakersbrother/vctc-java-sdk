@@ -1,6 +1,6 @@
 package io.vastchain.sdk.param;
 
-public class ApiRequestParam {
+public class VastChainRequestParam {
     /** appId */
     private String appId;
     /** appSecret */

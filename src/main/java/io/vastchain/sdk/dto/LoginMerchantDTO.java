@@ -1,6 +1,6 @@
 package io.vastchain.sdk.dto;
 
-public class LoginMerchantDTO extends VastChainDTO {
+public class LoginMerchantDTO extends VastChainResponseDTO {
     private String displayName;
     private String userId;
     private String loginToken;

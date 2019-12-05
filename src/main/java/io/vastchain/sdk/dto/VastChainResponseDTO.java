@@ -2,7 +2,7 @@ package io.vastchain.sdk.dto;
 
 import com.alibaba.fastjson.JSONObject;
 
-public class VastChainDTO {
+public class VastChainResponseDTO {
 
     private String status;
     private String version;

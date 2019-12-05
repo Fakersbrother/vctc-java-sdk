@@ -2,10 +2,11 @@ package io.vastchain.sdk;
 
 import com.alibaba.fastjson.JSON;
 import io.vastchain.sdk.dto.LoginMerchantDTO;
-import io.vastchain.sdk.dto.VastChainDTO;
+import io.vastchain.sdk.dto.VastChainResponseDTO;
 import io.vastchain.sdk.exception.ApiResponseException;
-import io.vastchain.sdk.param.ApiRequestParam;
+import io.vastchain.sdk.param.VastChainRequestParam;
 import io.vastchain.sdk.param.LoginMerchantParam;
+import io.vastchain.sdk.param.QueryFungibleBalanceParam;
 import io.vastchain.sdk.param.SendSmsParam;
 
 public class Test {
@@ -35,7 +36,8 @@ public class Test {
 
     public static void main(String[] args) throws ApiResponseException {
 //        sendSms();
-        loginMerchant();
+//        loginMerchant();
+        queryFungibleBalance();
     }
 
     public static void sendSms() throws ApiResponseException {
@@ -44,7 +46,7 @@ public class Test {
         param.setCodeType("integer");
         param.setPhoneNumbers("13918130040");
         setParam(param);
-        VastChainDTO result = VastChainApi.sendSms(param);
+        VastChainResponseDTO result = VastChainApi.sendSms(param);
         System.out.println(JSON.toJSONString(result));
     }
     public static void loginMerchant() throws ApiResponseException {
@@ -55,8 +57,20 @@ public class Test {
         LoginMerchantDTO result = VastChainApi.loginMerchant(param);
         System.out.println(JSON.toJSONString(result));
     }
+    public static void queryFungibleBalance() throws ApiResponseException {
+        QueryFungibleBalanceParam param = new QueryFungibleBalanceParam();
+        param.setUserId("1111");
+        param.setTokenAppId("1111");
+        param.setMaxAmount("100");
+        param.setUserAppId("1111");
+        param.setUuid("1111");
+        param.setTokenId("1111");
+        setParam(param);
+        VastChainResponseDTO result = VastChainApi.queryFungibleBalance(param);
+        System.out.println(JSON.toJSONString(result));
+    }
 
-    public static void setParam(ApiRequestParam param){
+    public static void setParam(VastChainRequestParam param){
        param.setAppId(APPID);
        param.setAppSecret(APPSECRET);
        param.setHostUrl(HOST_URL);
