@@ -1,14 +1,21 @@
 package itd.vastchain.sdk.param;
 
 
-import itd.vastchain.sdk.core.VctcApiContext;
-
 public class FetchDonateOnChainIdsParam{
 
     /**  要获取项目(project) 的链上 id，还是捐赠记录（donate）的链上id */
     private String type;
     /** 要查询的 id 列表，每次可批量查询 20 个 */
-    private Long originalIds;
+    private String [] originalIds;
+
+
+    public FetchDonateOnChainIdsParam() {
+    }
+
+    public FetchDonateOnChainIdsParam(String type, String[] originalIds) {
+        this.type = type;
+        this.originalIds = originalIds;
+    }
 
     public String getType() {
         return type;
@@ -18,11 +25,11 @@ public class FetchDonateOnChainIdsParam{
         this.type = type;
     }
 
-    public Long getOriginalIds() {
+    public String[] getOriginalIds() {
         return originalIds;
     }
 
-    public void setOriginalIds(Long originalIds) {
+    public void setOriginalIds(String[] originalIds) {
         this.originalIds = originalIds;
     }
 }

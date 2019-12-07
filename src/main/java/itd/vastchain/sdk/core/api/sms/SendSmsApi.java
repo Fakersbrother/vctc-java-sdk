@@ -1,11 +1,11 @@
-package itd.vastchain.sdk.core.api;
+package itd.vastchain.sdk.core.api.sms;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import itd.vastchain.sdk.core.AbstractVctcApi;
 import itd.vastchain.sdk.core.VctcApiContext;
-import itd.vastchain.sdk.dto.SendSmsDTO;
+import itd.vastchain.sdk.dto.DataIdDTO;
 import itd.vastchain.sdk.enums.HttpMethodEnum;
 import itd.vastchain.sdk.exception.VctcClientException;
 import itd.vastchain.sdk.exception.VctcException;
@@ -15,9 +15,11 @@ import itd.vastchain.sdk.util.OkhttpApi;
 
 /**
  * SendSmsApi
- * POST https://v1.api.tc.vastchain.ltd/sms/verificationCode
+ * 发送短信验证码
  */
 public class SendSmsApi extends AbstractVctcApi {
+
+    private final String path = "/merchant/login/";
 
     public SendSmsApi(VctcApiParam param) {
         super(param);
@@ -46,7 +48,7 @@ public class SendSmsApi extends AbstractVctcApi {
         String body = jsonObject.toJSONString();
 
         VctcApiContext apiContext = new VctcApiContext();
-        apiContext.setPath("/sms/verificationCode/");
+        apiContext.setPath(path);
         apiContext.setBody(body);
         apiContext.setHttpMethod(HttpMethodEnum.POST.getCode());
         apiContext.setCredentialParam(apiParam.getCredentialParam());
@@ -54,8 +56,8 @@ public class SendSmsApi extends AbstractVctcApi {
     }
 
     @Override
-    protected SendSmsDTO callApi(VctcApiContext context) throws VctcException {
+    protected DataIdDTO callApi(VctcApiContext context) throws VctcException {
         String result = new OkhttpApi(context.getFullApiurl(), context.getCredentialParam().getTimeout()).post(context.getBody());
-        return JSON.parseObject(result, SendSmsDTO.class);
+        return JSON.parseObject(result, DataIdDTO.class);
     }
 }

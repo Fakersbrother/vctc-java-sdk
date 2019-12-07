@@ -1,7 +1,8 @@
 package itd.vastchain.sdk.dto;
 
-public class CreateSubmerchantPayDTO extends VctcApiResponseDTO {
+public class CreateMerchantPrePayDTO extends VctcApiResponseDTO {
 
+    /** 预支付单号 */
     private String prepayId;
 
     public String getPrepayId() {

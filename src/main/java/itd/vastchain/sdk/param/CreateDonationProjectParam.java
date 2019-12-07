@@ -1,7 +1,7 @@
 package itd.vastchain.sdk.param;
 
 
-public class CreateDonationProjectParam{
+public class CreateDonationProjectParam {
 
     /**  必选，在项目方数据库中能唯一找到项目的项目 id，请确保该 id 不重复且可查询到项目情况 */
     private String id;
@@ -19,6 +19,24 @@ public class CreateDonationProjectParam{
     private String [] keyWords;
     /** 可选，目标金额，请务必按照此格式提供，分别代表最少金额（低于则项目不成立）、最高金额（超过则不再募资）；小数点后至少要有2位 */
     private String [] targetAmount;
+
+    public CreateDonationProjectParam() {
+    }
+
+    public CreateDonationProjectParam(String id) {
+        this.id = id;
+    }
+
+    public CreateDonationProjectParam(String id, Long createTime, String title, String desc, String founder, String[] category, String[] keyWords, String[] targetAmount) {
+        this.id = id;
+        this.createTime = createTime;
+        this.title = title;
+        this.desc = desc;
+        this.founder = founder;
+        this.category = category;
+        this.keyWords = keyWords;
+        this.targetAmount = targetAmount;
+    }
 
     public String getId() {
         return id;

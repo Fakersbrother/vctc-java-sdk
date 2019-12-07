@@ -5,5 +5,5 @@ package itd.vastchain.sdk.constant;
  */
 public class VctcApiErrorCodes {
 
-    public static final String SUCCESS = "SUCCESS";
+
 }

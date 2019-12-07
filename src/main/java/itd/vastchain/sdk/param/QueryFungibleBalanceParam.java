@@ -1,8 +1,6 @@
 package itd.vastchain.sdk.param;
 
-import itd.vastchain.sdk.core.VctcApiContext;
-
-public class QueryFungibleBalanceParam{
+public class QueryFungibleBalanceParam {
 
     /**  是该可信积分发行时所隶属的 appId */
     private String tokenAppId;
@@ -12,6 +10,16 @@ public class QueryFungibleBalanceParam{
     private String userAppId;
     /** 是该用户在所属的 appId 中的 id（即开发者在自己业务系统中的用户 id；该 id 无需事先在宇链云上注册或使用过）；*/
     private String userId;
+
+    public QueryFungibleBalanceParam() {
+    }
+
+    public QueryFungibleBalanceParam(String tokenAppId, String tokenId, String userAppId, String userId) {
+        this.tokenAppId = tokenAppId;
+        this.tokenId = tokenId;
+        this.userAppId = userAppId;
+        this.userId = userId;
+    }
 
     public String getTokenAppId() {
         return tokenAppId;

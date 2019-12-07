@@ -39,6 +39,13 @@ public class OkhttpApi {
        return call(request);
     }
 
+    public String put(String bodyJson) throws VctcException {
+        RequestBody body = RequestBody.create(JSON_TYPE, bodyJson);
+        Request request = new Request.Builder().url(uri)
+                .put(body).build();
+       return call(request);
+    }
+
     public String get() throws VctcException {
         Request request = new Request.Builder().url(uri)
                 .get().build();

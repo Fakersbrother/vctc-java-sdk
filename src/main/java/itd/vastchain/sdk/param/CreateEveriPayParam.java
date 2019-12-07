@@ -1,8 +1,6 @@
 package itd.vastchain.sdk.param;
 
-import itd.vastchain.sdk.core.VctcApiContext;
-
-public class CreateEveriPayParam{
+public class CreateEveriPayParam {
 
     /**  是该可信积分发行时所隶属的 appId */
     private String tokenAppId;
@@ -16,6 +14,18 @@ public class CreateEveriPayParam{
     private String maxAmount;
     /** 当前付款码链上id，纯随机的32位数字和字母，对同一笔支付应该是不变的 */
     private String uuid;
+
+    public CreateEveriPayParam() {
+    }
+
+    public CreateEveriPayParam(String tokenAppId, String tokenId, String userAppId, String userId, String maxAmount, String uuid) {
+        this.tokenAppId = tokenAppId;
+        this.tokenId = tokenId;
+        this.userAppId = userAppId;
+        this.userId = userId;
+        this.maxAmount = maxAmount;
+        this.uuid = uuid;
+    }
 
     public String getTokenAppId() {
         return tokenAppId;

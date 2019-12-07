@@ -15,6 +15,19 @@ public class CreateMerchantParam {
     /** 是否禁用该商户 */
     private Boolean disabled;
 
+    public CreateMerchantParam() {
+
+    }
+
+    public CreateMerchantParam(String type, String displayName, String pw, String appId, String parentMerchantId, Boolean disabled) {
+        this.type = type;
+        this.displayName = displayName;
+        this.pw = pw;
+        this.appId = appId;
+        this.parentMerchantId = parentMerchantId;
+        this.disabled = disabled;
+    }
+
     public String getType() {
         return type;
     }

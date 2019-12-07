@@ -1,8 +1,6 @@
 package itd.vastchain.sdk.param;
 
 
-import itd.vastchain.sdk.core.VctcApiContext;
-
 public class DonateDonationParam{
 
     /**  必选，在项目方数据库中能唯一找到项目的项目 id，请确保该 id 不重复且可查询到项目情况 */
@@ -21,6 +19,27 @@ public class DonateDonationParam{
     private String projectIdBc;
     /** 可选，金额，请务必按照此格式提供，小数点后要有2位 */
     private String amount;
+
+    public DonateDonationParam() {
+
+    }
+
+    public DonateDonationParam(String id, String donatorPublicKey, String projectIdBiz) {
+        this.id = id;
+        this.donatorPublicKey = donatorPublicKey;
+        this.projectIdBiz = projectIdBiz;
+    }
+
+    public DonateDonationParam(String id, Long createTime, String donatorId, String donatorPublicKey, String donatorName, String projectIdBiz, String projectIdBc, String amount) {
+        this.id = id;
+        this.createTime = createTime;
+        this.donatorId = donatorId;
+        this.donatorPublicKey = donatorPublicKey;
+        this.donatorName = donatorName;
+        this.projectIdBiz = projectIdBiz;
+        this.projectIdBc = projectIdBc;
+        this.amount = amount;
+    }
 
     public String getId() {
         return id;

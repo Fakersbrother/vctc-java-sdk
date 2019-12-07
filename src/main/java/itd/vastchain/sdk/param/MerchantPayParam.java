@@ -1,8 +1,6 @@
 package itd.vastchain.sdk.param;
 
-import itd.vastchain.sdk.core.VctcApiContext;
-
-public class MerchantPayParam{
+public class MerchantPayParam {
 
     /**  要修改支付参数的商户号或子商户号 */
     private String id;
@@ -20,6 +18,43 @@ public class MerchantPayParam{
     private String wechatAppId;
     /** 该宇链云子商户或父商户收款的微信商户的商户号 */
     private String wechatMchId;
+
+    public MerchantPayParam() {
+    }
+
+    /**
+     * 修改 WechatUnionPayBizSmall（银联微信小程序支付）参数
+     * @param id
+     * @param paymentChannel
+     * @param unionPayBizMchId
+     * @param terminalId
+     * @param notifyCallbackUrl
+     */
+    public MerchantPayParam(String id, String paymentChannel, String unionPayBizMchId, String terminalId, String notifyCallbackUrl) {
+        this.id = id;
+        this.paymentChannel = paymentChannel;
+        this.unionPayBizMchId = unionPayBizMchId;
+        this.terminalId = terminalId;
+        this.notifyCallbackUrl = notifyCallbackUrl;
+    }
+
+    /**
+     * 修改 WechatNative（微信支付）参数
+     * @param id
+     * @param paymentChannel
+     * @param notifyCallbackUrl
+     * @param profitSharing
+     * @param wechatAppId
+     * @param wechatMchId
+     */
+    public MerchantPayParam(String id, String paymentChannel,String notifyCallbackUrl, Boolean profitSharing, String wechatAppId, String wechatMchId) {
+        this.id = id;
+        this.paymentChannel = paymentChannel;
+        this.notifyCallbackUrl = notifyCallbackUrl;
+        this.profitSharing = profitSharing;
+        this.wechatAppId = wechatAppId;
+        this.wechatMchId = wechatMchId;
+    }
 
     public String getId() {
         return id;

@@ -2,8 +2,8 @@ package itd.vastchain.sdk.example;
 
 import com.alibaba.fastjson.JSON;
 import itd.vastchain.sdk.VctcApiClient;
+import itd.vastchain.sdk.dto.DataIdDTO;
 import itd.vastchain.sdk.dto.LoginMerchantDTO;
-import itd.vastchain.sdk.dto.SendSmsDTO;
 import itd.vastchain.sdk.enums.CodeTypeEnum;
 import itd.vastchain.sdk.exception.VctcException;
 import itd.vastchain.sdk.param.LoginMerchantParam;
@@ -48,7 +48,7 @@ public class ApiExample {
         param.setCode("1234");
         param.setCodeType(CodeTypeEnum.INTEGER);
         param.setPhoneNumbers("13918130040");
-        SendSmsDTO result = client.sendSms(param);
+        DataIdDTO result = client.sendSms(param);
         System.out.println(JSON.toJSONString(result));
     }
 
@@ -60,5 +60,7 @@ public class ApiExample {
         LoginMerchantDTO result = client.loginMerchant(param);
         System.out.println(JSON.toJSONString(result));
     }
+
+
 
 }

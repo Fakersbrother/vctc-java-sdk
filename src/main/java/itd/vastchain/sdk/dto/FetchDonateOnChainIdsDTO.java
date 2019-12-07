@@ -1,16 +1,16 @@
 package itd.vastchain.sdk.dto;
 
-import com.alibaba.fastjson.JSONObject;
+import java.util.Map;
 
 public class FetchDonateOnChainIdsDTO extends VctcApiResponseDTO {
 
-    private JSONObject ids;
+    private Map<String,String> ids;
 
-    public JSONObject getIds() {
+    public Map<String, String> getIds() {
         return ids;
     }
 
-    public void setIds(JSONObject ids) {
+    public void setIds(Map<String, String> ids) {
         this.ids = ids;
     }
 }

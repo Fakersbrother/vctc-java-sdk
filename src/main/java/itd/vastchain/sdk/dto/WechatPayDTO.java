@@ -1,16 +1,14 @@
 package itd.vastchain.sdk.dto;
 
-import com.alibaba.fastjson.JSONObject;
-
 public class WechatPayDTO extends VctcApiResponseDTO {
 
-    private JSONObject args;
+    private WechatPayArgsDTO args;
 
-    public JSONObject getArgs() {
+    public WechatPayArgsDTO getArgs() {
         return args;
     }
 
-    public void setArgs(JSONObject args) {
+    public void setArgs(WechatPayArgsDTO args) {
         this.args = args;
     }
 }

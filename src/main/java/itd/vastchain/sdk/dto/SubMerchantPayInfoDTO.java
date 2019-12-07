@@ -3,6 +3,7 @@ package itd.vastchain.sdk.dto;
 public class SubMerchantPayInfoDTO extends VctcApiResponseDTO {
     private String merchantDisplayName;
     private String totalAmount;
+    /**  注意这里指的是用户要支付的价格，而不是优惠前的价格 */
     private String disconut;
     private String createTime;
     private String paymentTime;
