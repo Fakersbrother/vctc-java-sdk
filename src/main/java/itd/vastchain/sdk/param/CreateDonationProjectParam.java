@@ -9,7 +9,9 @@ public class CreateDonationProjectParam {
     private Long createTime;
     /** 可选，项目名称 */
     private String title;
-    /** （可选，项目描述 */
+    /**
+     * 可选，项目描述
+     */
     private String desc;
     /** 可选，发起单位 */
     private String founder;

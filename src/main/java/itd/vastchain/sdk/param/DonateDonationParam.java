@@ -30,12 +30,12 @@ public class DonateDonationParam{
         this.projectIdBiz = projectIdBiz;
     }
 
-    public DonateDonationParam(String id, Long createTime, String donatorId, String donatorPublicKey, String donatorName, String projectIdBiz, String projectIdBc, String amount) {
+    public DonateDonationParam(String id, String donatorId, String donatorPublicKey, String donatorName, Long createTime, String projectIdBiz, String projectIdBc, String amount) {
         this.id = id;
-        this.createTime = createTime;
         this.donatorId = donatorId;
         this.donatorPublicKey = donatorPublicKey;
         this.donatorName = donatorName;
+        this.createTime = createTime;
         this.projectIdBiz = projectIdBiz;
         this.projectIdBc = projectIdBc;
         this.amount = amount;

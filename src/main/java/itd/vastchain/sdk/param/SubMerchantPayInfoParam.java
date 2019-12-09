@@ -1,10 +1,14 @@
 package itd.vastchain.sdk.param;
 
-public class SubMerchantPayInfoParam{
+public class SubMerchantPayInfoParam {
 
-    /**  二维码 scene 里解析出的子商户预支付单号； */
+    /**
+     * 二维码 scene 里解析出的子商户预支付单号；
+     */
     private String prepayid;
-    /** 可选值为 0 或 1，默认为 0，代表是否阻塞以等待实时的支付成功通知（强烈推荐） */
+    /**
+     * 可选值为 0 或 1，默认为 0，代表是否阻塞以等待实时的支付成功通知（强烈推荐）
+     */
     private String waitForFinish;
 
     public SubMerchantPayInfoParam() {

@@ -6,6 +6,7 @@ import itd.vastchain.sdk.core.AbstractVctcApi;
 import itd.vastchain.sdk.core.VctcApiContext;
 import itd.vastchain.sdk.dto.DataIdDTO;
 import itd.vastchain.sdk.enums.HttpMethodEnum;
+import itd.vastchain.sdk.enums.MerchantTypeEnum;
 import itd.vastchain.sdk.exception.VctcClientException;
 import itd.vastchain.sdk.exception.VctcException;
 import itd.vastchain.sdk.param.CreateMerchantParam;
@@ -36,14 +37,14 @@ public class CreateMerchantApi extends AbstractVctcApi {
     protected VctcApiContext buildContext() {
         CreateMerchantParam param = (CreateMerchantParam)apiParam.getBuinessApiParam();
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("type", param.getType());
+        jsonObject.put("type", param.getType().getCode());
 
         JSONObject parameters = new JSONObject();
         parameters.put("displayName", param.getDisplayName());
         parameters.put("pw", param.getPw());
         parameters.put("disabled", param.getDisabled());
         parameters.put("appId", param.getAppId());
-        if ("subMerchant".equals(param.getType())) {
+        if (MerchantTypeEnum.SUB_MERCHANT == param.getType()) {
             parameters.put("parentMerchantId", param.getParentMerchantId());
         }
         jsonObject.put("parameters", parameters);

@@ -34,7 +34,7 @@ public class FetchDonateOnChainIdsApi extends AbstractVctcApi {
     protected VctcApiContext buildContext() {
         FetchDonateOnChainIdsParam param = (FetchDonateOnChainIdsParam)apiParam.getBuinessApiParam();
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("type", param.getType());
+        jsonObject.put("type", param.getType().getCode());
         jsonObject.put("originalIds", param.getOriginalIds());
         String body = jsonObject.toJSONString();
 

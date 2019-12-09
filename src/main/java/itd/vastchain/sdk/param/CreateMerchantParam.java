@@ -1,14 +1,24 @@
 package itd.vastchain.sdk.param;
 
 
+import itd.vastchain.sdk.enums.MerchantTypeEnum;
+
 public class CreateMerchantParam {
-    /**  type 创建子商户（subMerchant）还是父商户（merchant) */
-    private String type;
-    /**  商户显示名称 */
+    /**
+     * type 创建子商户（subMerchant）还是父商户（merchant)
+     */
+    private MerchantTypeEnum type;
+    /**
+     * 商户显示名称
+     */
     private String displayName;
-    /** 商户密码*/
+    /**
+     * 商户密码
+     */
     private String pw;
-    /** 该商户所属的 appId。该 `appId` 可以和签名用的 `appId` 不同，一旦设置无法修改，未来该 `appId` 拥有修改该 `merchant` 各类信息的权限 */
+    /**
+     * 该商户所属的 appId。该 `appId` 可以和签名用的 `appId` 不同，一旦设置无法修改，未来该 `appId` 拥有修改该 `merchant` 各类信息的权限
+     */
     private String appId;
     /** （仅创建子商户时传递）该商户所属的父商户 */
     private String parentMerchantId;
@@ -19,7 +29,7 @@ public class CreateMerchantParam {
 
     }
 
-    public CreateMerchantParam(String type, String displayName, String pw, String appId, String parentMerchantId, Boolean disabled) {
+    public CreateMerchantParam(MerchantTypeEnum type, String displayName, String pw, String appId, String parentMerchantId, Boolean disabled) {
         this.type = type;
         this.displayName = displayName;
         this.pw = pw;
@@ -28,11 +38,11 @@ public class CreateMerchantParam {
         this.disabled = disabled;
     }
 
-    public String getType() {
+    public MerchantTypeEnum getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(MerchantTypeEnum type) {
         this.type = type;
     }
 

@@ -7,6 +7,7 @@ import itd.vastchain.sdk.core.api.donation.CreateDonationProjectApi;
 import itd.vastchain.sdk.core.api.donation.DonateDonationtApi;
 import itd.vastchain.sdk.core.api.donation.FetchDonateOnChainIdsApi;
 import itd.vastchain.sdk.core.api.fungible.CreateEveriPayApi;
+import itd.vastchain.sdk.core.api.fungible.QueryFungibleBalanceApi;
 import itd.vastchain.sdk.core.api.merchant.CreateMerchantApi;
 import itd.vastchain.sdk.core.api.merchant.LoginMerchantApi;
 import itd.vastchain.sdk.core.api.pay.*;
@@ -56,7 +57,7 @@ public class VctcApiClient {
      * @return
      * @throws VctcException
      */
-    DataIdDTO createMerchant(CreateMerchantParam param) throws VctcException {
+    public DataIdDTO createMerchant(CreateMerchantParam param) throws VctcException {
         return new CreateMerchantApi(new VctcApiParam(param, credentialParam)).request();
     }
 
@@ -67,7 +68,7 @@ public class VctcApiClient {
      * @return
      * @throws VctcException
      */
-    VctcApiResponseDTO createDonationProject(CreateDonationProjectParam param) throws VctcException {
+    public VctcApiResponseDTO createDonationProject(CreateDonationProjectParam param) throws VctcException {
         return new CreateDonationProjectApi(new VctcApiParam(param, credentialParam)).request();
     }
 
@@ -78,7 +79,7 @@ public class VctcApiClient {
      * @return
      * @throws VctcException
      */
-    VctcApiResponseDTO donateDonation(DonateDonationParam param) throws VctcException {
+    public VctcApiResponseDTO donateDonation(DonateDonationParam param) throws VctcException {
         return new DonateDonationtApi(new VctcApiParam(param, credentialParam)).request();
     }
 
@@ -89,7 +90,7 @@ public class VctcApiClient {
      * @return
      * @throws VctcException
      */
-    FetchDonateOnChainIdsDTO fetchDonateOnChainIds(FetchDonateOnChainIdsParam param) throws VctcException {
+    public FetchDonateOnChainIdsDTO fetchDonateOnChainIds(FetchDonateOnChainIdsParam param) throws VctcException {
         return new FetchDonateOnChainIdsApi(new VctcApiParam(param, credentialParam)).request();
     }
 
@@ -100,8 +101,8 @@ public class VctcApiClient {
      * @return
      * @throws VctcException
      */
-    QueryFungibleBalanceDTO queryFungibleBalance(QueryFungibleBalanceParam param) throws VctcException {
-        return new FetchDonateOnChainIdsApi(new VctcApiParam(param, credentialParam)).request();
+    public QueryFungibleBalanceDTO queryFungibleBalance(QueryFungibleBalanceParam param) throws VctcException {
+        return new QueryFungibleBalanceApi(new VctcApiParam(param, credentialParam)).request();
     }
 
     /**
@@ -111,7 +112,7 @@ public class VctcApiClient {
      * @return
      * @throws VctcException
      */
-    CreateEveriPayDTO createEveriPay(CreateEveriPayParam param) throws VctcException {
+    public CreateEveriPayDTO createEveriPay(CreateEveriPayParam param) throws VctcException {
         return new CreateEveriPayApi(new VctcApiParam(param, credentialParam)).request();
     }
 
@@ -122,7 +123,7 @@ public class VctcApiClient {
      * @return
      * @throws VctcException
      */
-    CreateMerchantPrePayDTO createMerchantPrePay(CreateMerchantPrePayParam param) throws VctcException {
+    public CreateMerchantPrePayDTO createMerchantPrePay(CreateMerchantPrePayParam param) throws VctcException {
         return new CreateMerchantPrePayApi(new VctcApiParam(param, credentialParam)).request();
     }
 
@@ -133,7 +134,7 @@ public class VctcApiClient {
      * @return
      * @throws VctcException
      */
-    SubMerchantPayInfoDTO getSubMerchantPayInfo(SubMerchantPayInfoParam param) throws VctcException {
+    public SubMerchantPayInfoDTO getSubMerchantPayInfo(SubMerchantPayInfoParam param) throws VctcException {
         return new GetSubMerchantPayInfoApi(new VctcApiParam(param, credentialParam)).request();
     }
 
@@ -144,7 +145,7 @@ public class VctcApiClient {
      * @return
      * @throws VctcException
      */
-    WechatPayDTO createWechatNativePay(WechatNativePayParam param) throws VctcException {
+    public WechatPayDTO createWechatNativePay(WechatNativePayParam param) throws VctcException {
         return new CreateWechatNativePayApi(new VctcApiParam(param, credentialParam)).request();
     }
 
@@ -155,7 +156,7 @@ public class VctcApiClient {
      * @return
      * @throws VctcException
      */
-    WechatPayDTO createWechatPay(WechatPayParam param) throws VctcException {
+    public WechatPayDTO createWechatPay(WechatPayParam param) throws VctcException {
         return new CreateWechatPayApi(new VctcApiParam(param, credentialParam)).request();
     }
 
@@ -166,7 +167,7 @@ public class VctcApiClient {
      * @return
      * @throws VctcException
      */
-    WechatPayDTO createWechatAppPay(WechatAppPayParam param) throws VctcException {
+    public WechatPayDTO createWechatAppPay(WechatAppPayParam param) throws VctcException {
         return new CreateWechatAppPayApi(new VctcApiParam(param, credentialParam)).request();
     }
 
@@ -177,7 +178,7 @@ public class VctcApiClient {
      * @return
      * @throws VctcException
      */
-    VctcApiResponseDTO refund(RefundParam param) throws VctcException {
+    public VctcApiResponseDTO refund(RefundParam param) throws VctcException {
         return new RefundApi(new VctcApiParam(param, credentialParam)).request();
     }
 
@@ -188,7 +189,7 @@ public class VctcApiClient {
      * @return
      * @throws VctcException
      */
-    VctcApiResponseDTO setMerchantPayParams(MerchantPayParam param) throws VctcException {
+    public VctcApiResponseDTO setMerchantPayParams(MerchantPayParam param) throws VctcException {
         return new SetMerchantPayParamsApi(new VctcApiParam(param, credentialParam)).request();
     }
 
@@ -199,7 +200,7 @@ public class VctcApiClient {
      * @return
      * @throws VctcException
      */
-    FetchOnChainIdsDTO fetchOnChainIds(FetchOnChainIdsParam param) throws VctcException {
+    public FetchOnChainIdsDTO fetchOnChainIds(FetchOnChainIdsParam param) throws VctcException {
         return new FetchOnChainIdsApi(new VctcApiParam(param, credentialParam)).request();
     }
 
@@ -210,7 +211,7 @@ public class VctcApiClient {
      * @return
      * @throws VctcException
      */
-    VctcApiResponseDTO uploadToBlockChain(UploadToBlockChainParam param) throws VctcException {
+    public VctcApiResponseDTO uploadToBlockChain(UploadToBlockChainParam param) throws VctcException {
         return new UploadToBlockChainApi(new VctcApiParam(param, credentialParam)).request();
     }
 }

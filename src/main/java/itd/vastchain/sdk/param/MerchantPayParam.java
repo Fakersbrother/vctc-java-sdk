@@ -1,14 +1,24 @@
 package itd.vastchain.sdk.param;
 
+import itd.vastchain.sdk.enums.PayChannelEnum;
+
 public class MerchantPayParam {
 
-    /**  要修改支付参数的商户号或子商户号 */
+    /**
+     * 要修改支付参数的商户号或子商户号
+     */
     private String id;
-    /** 修改参数的支付通道，目前支持 WechatNative（微信支付）、WechatUnionPayBizSmall（银联微信小程序支付）两种 */
-    private String paymentChannel;
-    /**银联商户号 */
+    /**
+     * 修改参数的支付通道，目前支持 WechatNative（微信支付）、WechatUnionPayBizSmall（银联微信小程序支付）两种
+     */
+    private PayChannelEnum paymentChannel;
+    /**
+     * 银联商户号
+     */
     private String unionPayBizMchId;
-    /**  支付终端 Id */
+    /**
+     * 支付终端 Id
+     */
     private String terminalId;
     /** 支付回调地址 */
     private String notifyCallbackUrl;
@@ -24,13 +34,14 @@ public class MerchantPayParam {
 
     /**
      * 修改 WechatUnionPayBizSmall（银联微信小程序支付）参数
+     *
      * @param id
      * @param paymentChannel
      * @param unionPayBizMchId
      * @param terminalId
      * @param notifyCallbackUrl
      */
-    public MerchantPayParam(String id, String paymentChannel, String unionPayBizMchId, String terminalId, String notifyCallbackUrl) {
+    public MerchantPayParam(String id, PayChannelEnum paymentChannel, String unionPayBizMchId, String terminalId, String notifyCallbackUrl) {
         this.id = id;
         this.paymentChannel = paymentChannel;
         this.unionPayBizMchId = unionPayBizMchId;
@@ -40,6 +51,7 @@ public class MerchantPayParam {
 
     /**
      * 修改 WechatNative（微信支付）参数
+     *
      * @param id
      * @param paymentChannel
      * @param notifyCallbackUrl
@@ -47,7 +59,7 @@ public class MerchantPayParam {
      * @param wechatAppId
      * @param wechatMchId
      */
-    public MerchantPayParam(String id, String paymentChannel,String notifyCallbackUrl, Boolean profitSharing, String wechatAppId, String wechatMchId) {
+    public MerchantPayParam(String id, PayChannelEnum paymentChannel, String notifyCallbackUrl, Boolean profitSharing, String wechatAppId, String wechatMchId) {
         this.id = id;
         this.paymentChannel = paymentChannel;
         this.notifyCallbackUrl = notifyCallbackUrl;
@@ -64,11 +76,11 @@ public class MerchantPayParam {
         this.id = id;
     }
 
-    public String getPaymentChannel() {
+    public PayChannelEnum getPaymentChannel() {
         return paymentChannel;
     }
 
-    public void setPaymentChannel(String paymentChannel) {
+    public void setPaymentChannel(PayChannelEnum paymentChannel) {
         this.paymentChannel = paymentChannel;
     }
 

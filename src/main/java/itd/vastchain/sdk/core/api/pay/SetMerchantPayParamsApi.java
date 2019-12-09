@@ -6,6 +6,7 @@ import itd.vastchain.sdk.core.AbstractVctcApi;
 import itd.vastchain.sdk.core.VctcApiContext;
 import itd.vastchain.sdk.dto.VctcApiResponseDTO;
 import itd.vastchain.sdk.enums.HttpMethodEnum;
+import itd.vastchain.sdk.enums.PayChannelEnum;
 import itd.vastchain.sdk.exception.VctcClientException;
 import itd.vastchain.sdk.exception.VctcException;
 import itd.vastchain.sdk.param.MerchantPayParam;
@@ -35,14 +36,14 @@ public class SetMerchantPayParamsApi extends AbstractVctcApi {
         MerchantPayParam param = (MerchantPayParam)apiParam.getBuinessApiParam();
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("id", param.getId());
-        jsonObject.put("paymentChannel", param.getPaymentChannel());
+        jsonObject.put("paymentChannel", param.getPaymentChannel().getCode());
 
         JSONObject parameters = new JSONObject();
         parameters.put("notifyCallbackUrl", param.getNotifyCallbackUrl());
-        if ("WechatUnionPayBizSmall".equals(param.getPaymentChannel())) {
+        if (PayChannelEnum.WECHAT_UNIONPAYBIZSMALL == param.getPaymentChannel()) {
             parameters.put("unionPayBizMchId", param.getUnionPayBizMchId());
             parameters.put("terminalId", param.getTerminalId());
-        } else if ("WechatNative".equals(param.getPaymentChannel())) {
+        } else if (PayChannelEnum.WECHAT_NATIVE == param.getPaymentChannel()) {
             parameters.put("profitSharing", param.getProfitSharing());
             parameters.put("wechatAppId", param.getWechatAppId());
             parameters.put("wechatMchId", param.getWechatMchId());

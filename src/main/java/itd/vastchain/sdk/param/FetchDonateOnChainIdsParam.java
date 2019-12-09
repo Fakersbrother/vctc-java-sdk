@@ -1,27 +1,33 @@
 package itd.vastchain.sdk.param;
 
 
-public class FetchDonateOnChainIdsParam{
+import itd.vastchain.sdk.enums.DonationTypeEnum;
 
-    /**  要获取项目(project) 的链上 id，还是捐赠记录（donate）的链上id */
-    private String type;
-    /** 要查询的 id 列表，每次可批量查询 20 个 */
-    private String [] originalIds;
+public class FetchDonateOnChainIdsParam {
+
+    /**
+     * 要获取项目(project) 的链上 id，还是捐赠记录（donate）的链上id
+     */
+    private DonationTypeEnum type;
+    /**
+     * 要查询的 id 列表，每次可批量查询 20 个
+     */
+    private String[] originalIds;
 
 
     public FetchDonateOnChainIdsParam() {
     }
 
-    public FetchDonateOnChainIdsParam(String type, String[] originalIds) {
+    public FetchDonateOnChainIdsParam(DonationTypeEnum type, String[] originalIds) {
         this.type = type;
         this.originalIds = originalIds;
     }
 
-    public String getType() {
+    public DonationTypeEnum getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(DonationTypeEnum type) {
         this.type = type;
     }
 
