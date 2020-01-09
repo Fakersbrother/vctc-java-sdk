@@ -67,8 +67,8 @@ import java.util.List;
 
 public class ApiExample {
 
-    private static final String APPID = "AzE5";
-    private static final String APPSECRET = "u4VcwCrZ0tD$ozhE";
+    private static final String APPID = "";
+    private static final String APPSECRET = "";
     private static final String HOST_URL = "https://v1.api.tc.vastchain.ltd";
 
     public static void main(String[] args) throws VctcException {
@@ -91,6 +91,11 @@ public class ApiExample {
 //        uploadToBlockChain();
     }
 
+    /**
+     * 发送短信验证码
+     * 参考：https://www.vastchain.cn/docs/api/sms
+     * @throws VctcException
+     */
     public static void sendSms() throws VctcException {
         VctcApiCredentialParam credentialParam = new VctcApiAppIdCredentialParam(APPID, APPSECRET, HOST_URL);
         VctcApiClient client = new VctcApiClient(credentialParam);
@@ -102,6 +107,11 @@ public class ApiExample {
         System.out.println(JSON.toJSONString(result));
     }
 
+    /**
+     * 商户登录
+     * 参考：https://www.vastchain.cn/docs#/api/merchant
+     * @throws VctcException
+     */
     public static void loginMerchant() throws VctcException {
         VctcApiCredentialParam credentialParam = new VctcApiAppIdCredentialParam(APPID, APPSECRET, HOST_URL);
         VctcApiClient client = new VctcApiClient(credentialParam);
@@ -111,6 +121,11 @@ public class ApiExample {
         System.out.println(JSON.toJSONString(result));
     }
 
+    /**
+     * 创建商户
+     * 参考：https://www.vastchain.cn/docs#/api/merchant
+     * @throws VctcException
+     */
     public static void createMerchant() throws VctcException {
         VctcApiCredentialParam credentialParam = new VctcApiAppIdCredentialParam(APPID, APPSECRET, HOST_URL);
         VctcApiClient client = new VctcApiClient(credentialParam);
@@ -120,6 +135,11 @@ public class ApiExample {
         System.out.println(JSON.toJSONString(result));
     }
 
+    /**
+     * 创建捐款项目
+     * 参考：https://www.vastchain.cn/docs#/api/donation
+     * @throws VctcException
+     */
     public static void createDonationProject() throws VctcException {
         VctcApiCredentialParam credentialParam = new VctcApiAppIdCredentialParam(APPID, APPSECRET, HOST_URL);
         VctcApiClient client = new VctcApiClient(credentialParam);
@@ -129,6 +149,11 @@ public class ApiExample {
         System.out.println(JSON.toJSONString(result));
     }
 
+    /**
+     * 创建捐款项目的一次捐赠
+     * 参考：https://www.vastchain.cn/docs#/api/donation
+     * @throws VctcException
+     */
     public static void donateDonation() throws VctcException {
         VctcApiCredentialParam credentialParam = new VctcApiAppIdCredentialParam(APPID, APPSECRET, HOST_URL);
         VctcApiClient client = new VctcApiClient(credentialParam);
@@ -138,6 +163,11 @@ public class ApiExample {
         System.out.println(JSON.toJSONString(result));
     }
 
+    /**
+     * 获取捐款上链 ID
+     * 参考：https://www.vastchain.cn/docs#/api/donation
+     * @throws VctcException
+     */
     public static void fetchDonateOnChainIds() throws VctcException {
         VctcApiCredentialParam credentialParam = new VctcApiAppIdCredentialParam(APPID, APPSECRET, HOST_URL);
         VctcApiClient client = new VctcApiClient(credentialParam);
@@ -147,6 +177,11 @@ public class ApiExample {
         System.out.println(JSON.toJSONString(result));
     }
 
+    /**
+     * 查询可信积分余额
+     * 参考：https://www.vastchain.cn/docs#/api/ft
+     * @throws VctcException
+     */
     public static void queryFungibleBalance() throws VctcException {
         VctcApiCredentialParam credentialParam = new VctcApiAppIdCredentialParam(APPID, APPSECRET, HOST_URL);
         VctcApiClient client = new VctcApiClient(credentialParam);
@@ -156,6 +191,11 @@ public class ApiExample {
         System.out.println(JSON.toJSONString(result));
     }
 
+    /**
+     * 生成可信积分扣款二维码（everiPay）
+     * 参考：https://www.vastchain.cn/docs#/api/ft
+     * @throws VctcException
+     */
     public static void createEveriPay() throws VctcException {
         VctcApiCredentialParam credentialParam = new VctcApiAppIdCredentialParam(APPID, APPSECRET, HOST_URL);
         VctcApiClient client = new VctcApiClient(credentialParam);
@@ -165,6 +205,11 @@ public class ApiExample {
         System.out.println(JSON.toJSONString(result));
     }
 
+    /**
+     * 创建预支付单
+     * 参考：https://www.vastchain.cn/docs#/api/subpay
+     * @throws VctcException
+     */
     public static void createMerchantPrePay() throws VctcException {
         VctcApiCredentialParam credentialParam = new VctcApiAppIdCredentialParam(APPID, APPSECRET, HOST_URL);
         VctcApiClient client = new VctcApiClient(credentialParam);
@@ -174,6 +219,11 @@ public class ApiExample {
         System.out.println(JSON.toJSONString(result));
     }
 
+    /**
+     * 获取子商户支付详情
+     * 参考：https://www.vastchain.cn/docs#/api/subpay
+     * @throws VctcException
+     */
     public static void getSubMerchantPayInfo() throws VctcException {
         VctcApiCredentialParam credentialParam = new VctcApiAppIdCredentialParam(APPID, APPSECRET, HOST_URL);
         VctcApiClient client = new VctcApiClient(credentialParam);
@@ -183,6 +233,11 @@ public class ApiExample {
         System.out.println(JSON.toJSONString(result));
     }
 
+    /**
+     * 创建微信扫码支付参数
+     * 参考：https://www.vastchain.cn/docs#/api/subpay
+     * @throws VctcException
+     */
     public static void createWechatNativePay() throws VctcException {
         VctcApiCredentialParam credentialParam = new VctcApiAppIdCredentialParam(APPID, APPSECRET, HOST_URL);
         VctcApiClient client = new VctcApiClient(credentialParam);
@@ -192,6 +247,11 @@ public class ApiExample {
         System.out.println(JSON.toJSONString(result));
     }
 
+    /**
+     * 创建微信小程序支付参数
+     * 参考：https://www.vastchain.cn/docs#/api/subpay
+     * @throws VctcException
+     */
     public static void createWechatPay() throws VctcException {
         VctcApiCredentialParam credentialParam = new VctcApiAppIdCredentialParam(APPID, APPSECRET, HOST_URL);
         VctcApiClient client = new VctcApiClient(credentialParam);
@@ -201,6 +261,11 @@ public class ApiExample {
         System.out.println(JSON.toJSONString(result));
     }
 
+    /**
+     * 创建微信App支付参数
+     * 参考：https://www.vastchain.cn/docs#/api/subpay
+     * @throws VctcException
+     */
     public static void createWechatAppPay() throws VctcException {
         VctcApiCredentialParam credentialParam = new VctcApiAppIdCredentialParam(APPID, APPSECRET, HOST_URL);
         VctcApiClient client = new VctcApiClient(credentialParam);
@@ -210,6 +275,11 @@ public class ApiExample {
         System.out.println(JSON.toJSONString(result));
     }
 
+    /**
+     * 退款接口
+     * 参考：https://www.vastchain.cn/docs#/api/subpay
+     * @throws VctcException
+     */
     public static void refund() throws VctcException {
         VctcApiCredentialParam credentialParam = new VctcApiAppIdCredentialParam(APPID, APPSECRET, HOST_URL);
         VctcApiClient client = new VctcApiClient(credentialParam);
@@ -219,6 +289,11 @@ public class ApiExample {
         System.out.println(JSON.toJSONString(result));
     }
 
+    /**
+     * 设置商户支付参数
+     * 参考：https://www.vastchain.cn/docs#/api/subpay
+     * @throws VctcException
+     */
     public static void setMerchantPayParams() throws VctcException {
         VctcApiCredentialParam credentialParam = new VctcApiAppIdCredentialParam(APPID, APPSECRET, HOST_URL);
         VctcApiClient client = new VctcApiClient(credentialParam);
@@ -231,6 +306,11 @@ public class ApiExample {
         System.out.println(JSON.toJSONString(result));
     }
 
+    /**
+     * 获取链上ID接口
+     * 参考：https://www.vastchain.cn/docs#/api/up_commit
+     * @throws VctcException
+     */
     public static void fetchOnChainIds() throws VctcException {
         VctcApiCredentialParam credentialParam = new VctcApiAppIdCredentialParam(APPID, APPSECRET, HOST_URL);
         VctcApiClient client = new VctcApiClient(credentialParam);
@@ -243,6 +323,11 @@ public class ApiExample {
         System.out.println(JSON.toJSONString(result));
     }
 
+    /**
+     * 批量上链接口
+     * 参考：https://www.vastchain.cn/docs#/api/up_commit
+     * @throws VctcException
+     */
     public static void uploadToBlockChain() throws VctcException {
         VctcApiCredentialParam credentialParam = new VctcApiAppIdCredentialParam(APPID, APPSECRET, HOST_URL);
         VctcApiClient client = new VctcApiClient(credentialParam);
