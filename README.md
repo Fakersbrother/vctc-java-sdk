@@ -20,7 +20,7 @@ In project `pom.xml` file
    <dependency>
        <groupId>ltd.vastchain</groupId>
        <artifactId>vctc-java-sdk</artifactId>
-       <version>1.0.0</version>
+       <version>1.0.1</version>
    </dependency>
 </dependencies>
 ```

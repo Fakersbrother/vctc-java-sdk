@@ -6,7 +6,7 @@
 
     <groupId>ltd.vastchain</groupId>
     <artifactId>vctc-java-sdk</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 
     <name>vctc-java-sdk</name>
     <description>Official Java SDK for VastChain. https://www.vastchain.cn</description>
