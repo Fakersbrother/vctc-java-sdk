@@ -19,7 +19,7 @@ import ltd.vastchain.sdk.util.OkhttpApi;
  */
 public class SendSmsApi extends AbstractVctcApi {
 
-    private final String path = "/merchant/login/";
+    private final String path = "/sms/verificationCode/";
 
     public SendSmsApi(VctcApiParam param) {
         super(param);
