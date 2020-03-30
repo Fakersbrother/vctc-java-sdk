@@ -214,10 +214,11 @@ public class ApiExample {
         List<UploadToBlockChainItemsParam> items = new ArrayList<>();
         UploadToBlockChainItemsParam item = new UploadToBlockChainItemsParam(UploadChainTypeEnum.EVERIPAY);
         JSONObject args = new JSONObject();
+        //根据不同的UploadChainType  添加不同的必要参数
         args.put("id", "jV3oisdj489vsdlkj");
         args.put("evtLink", "0DFYxxx");
         args.put("amount", "39.28");
-        item.setItems(args);
+        item.setArgs(args);
         items.add(item);
         UploadToBlockChainParam param = new UploadToBlockChainParam(items);
 
