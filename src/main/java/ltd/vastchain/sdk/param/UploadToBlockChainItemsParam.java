@@ -6,7 +6,7 @@ import ltd.vastchain.sdk.enums.UploadChainTypeEnum;
 public class UploadToBlockChainItemsParam {
     private UploadChainTypeEnum type;
 
-    private JSONObject items;
+    private JSONObject args;
 
     public UploadToBlockChainItemsParam() {
 
@@ -18,7 +18,7 @@ public class UploadToBlockChainItemsParam {
 
     public UploadToBlockChainItemsParam(UploadChainTypeEnum type, JSONObject items) {
         this.type = type;
-        this.items = items;
+        this.args = items;
     }
 
     public String getType() {
@@ -30,10 +30,10 @@ public class UploadToBlockChainItemsParam {
     }
 
     public JSONObject getItems() {
-        return items;
+        return args;
     }
 
     public void setItems(JSONObject items) {
-        this.items = items;
+        this.args = items;
     }
 }
