@@ -21,9 +21,10 @@ public class Signature {
     /**
      *  对一个宇链云 API 调用进行签名，返回签名字符串。此方法中 query 必须包含 _appId 和 _t，不能包含 _
      * @param api 接口请求相关参数
+     * @param time 时间戳
      * @return
      */
-    public static String sign(VctcApiContext api) {
+    public static String sign(VctcApiContext api,long time) {
         String query = api.getQuery();
         String httpMethod = api.getHttpMethod();
         String body = api.getBody();
@@ -35,7 +36,7 @@ public class Signature {
             query = "";
         }
         // 在 Query 中拼接 _appid 和 时间戳 _t
-        String appendedQuery = "_appid=" + appId + "&_t=" + new Date().getTime();
+        String appendedQuery = "_appid=" + appId + "&_t=" + time;
 
         if (query.equals("")) {
             query = appendedQuery;

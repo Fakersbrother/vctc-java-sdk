@@ -1,3 +1,57 @@
+# vctc-java-sdk<!-- omit in toc -->
+
+Official Java SDK for VastChain. https://www.vastchain.cn
+
+> This SDK also has an [**example package**](https://github.com/vastchain/vctc-java-sdk/tree/master/src/main/java/ltd/vastchain/sdk/example/) set up, which lists various useful code examples for quick references on how to interact with VastChain.
+
+- [Install](#install)
+  - [use with Maven project](#use-with-maven-project)
+  - [other](#other)
+- [Usage overview](#usage-overview)
+
+## Install
+
+### use with Maven project
+
+In project `pom.xml` file
+
+```xml
+<dependencies>
+   <dependency>
+       <groupId>ltd.vastchain</groupId>
+       <artifactId>vctc-java-sdk</artifactId>
+       <version>1.0.1</version>
+   </dependency>
+</dependencies>
+```
+
+### other
+
+Build jar with all the dependencies, run the following command
+
+`mvn clean compile assembly:single`
+
+It will generate jar with all dependencies under `target` folder
+
+Use maven command to install `jar` as dependency
+
+```console
+$ mvn install:install-file -Dfile=path/to/jar/file \
+                           -DgroupId=ltd.vastchain \
+                           -DartifactId=vctc-java-sdk \
+                           -Dversion=version \
+                           -Dpackaging=jar
+
+```
+
+## Usage overview
+
+Here is the code example which highlights the common usage of the SDK.
+
+<details>
+<summary>Click to see full code example</summary>
+
+```java
 package ltd.vastchain.sdk.example;
 
 import com.alibaba.fastjson.JSON;
@@ -280,11 +334,10 @@ public class ApiExample {
         List<UploadToBlockChainItemsParam> items = new ArrayList<>();
         UploadToBlockChainItemsParam item = new UploadToBlockChainItemsParam(UploadChainTypeEnum.EVERIPAY);
         JSONObject args = new JSONObject();
-        //根据不同的UploadChainType  添加不同的必要参数
         args.put("id", "jV3oisdj489vsdlkj");
         args.put("evtLink", "0DFYxxx");
         args.put("amount", "39.28");
-        item.setArgs(args);
+        item.setItems(args);
         items.add(item);
         UploadToBlockChainParam param = new UploadToBlockChainParam(items);
 
@@ -293,3 +346,7 @@ public class ApiExample {
     }
 
 }
+
+```
+
+</details>

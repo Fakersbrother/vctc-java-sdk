@@ -7,6 +7,8 @@ import ltd.vastchain.sdk.param.VctcApiCredentialParam;
 import ltd.vastchain.sdk.param.VctcApiParam;
 import ltd.vastchain.sdk.util.Signature;
 
+import java.util.Date;
+
 public abstract class AbstractVctcApi implements VctcApi {
 
     protected VctcApiParam apiParam;
@@ -33,7 +35,7 @@ public abstract class AbstractVctcApi implements VctcApi {
      * @return
      */
     protected String sign(VctcApiContext context) {
-        String url = Signature.sign(context);
+        String url = Signature.sign(context,new Date().getTime());
         context.setFullApiurl(url);
         return url;
     }
